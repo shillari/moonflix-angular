@@ -1,0 +1,15 @@
+.mat-mdc-input-element {
+  color: white;
+}
+
+.registration-page {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 400px;
+  /* Optional: Limit the width of the form */
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}

@@ -1,0 +1,18 @@
+.mat-toolbar-single-row {
+  position: absolute;
+  background: transparent;
+  z-index: 100;
+}
+
+.mat-icon {
+  width: 50px;
+  height: 40px;
+  font-size: 40px;
+  background-color: rgba(245, 245, 245, 0.301);
+  color: black;
+  border-radius: 5px;
+}
+
+.toolbar-welcome button {
+  margin-right: 10px;
+}

@@ -1,0 +1,41 @@
+$body-bg: #34373aa2;
+
+.toolbar-welcome,
+.mat-toolbar-single-row {
+  background: transparent;
+  position: absolute;
+}
+
+.mat-toolbar-single-row button {
+  margin-right: 10px;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../../public/img/backgroud.png');
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-page {
+  display: flex;
+  width: 40%;
+  height: 80%;
+  background-color: $body-bg;
+  color: white;
+  justify-items: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 10px;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  padding-bottom: 20px;
+}

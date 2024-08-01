@@ -1,0 +1,17 @@
+<div class="toolbar-welcome">
+  <mat-toolbar>
+    <button mat-raised-button color="primary" aria-label="login button" (click)="openUserLogin()">
+      <mat-label>Login</mat-label>
+    </button>
+    <button mat-raised-button color="primary" aria-label="login button" (click)="openUserRegistrationDialog()">
+      <mat-label>Sign up</mat-label>
+    </button>
+  </mat-toolbar>
+</div>
+<main class="main">
+  <div class="main-page">
+    <img class="logo" src="img/logo.png" alt="logo">
+    <app-user-login-page *ngIf="login"></app-user-login-page>
+    <app-user-registration-page *ngIf="!login"></app-user-registration-page>
+  </div>
+</main>
