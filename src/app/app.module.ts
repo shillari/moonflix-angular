@@ -31,7 +31,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   {
-    path: '',
+    path: 'home',
     component: MainLayoutComponent,
     children: [
       {
@@ -39,10 +39,12 @@ const appRoutes: Routes = [
       },
       {
         path: 'profile', component: UserProfileComponent
-      }
+      },
+      { path: '', redirectTo: 'movies', pathMatch: 'full' }
     ]
   },
-  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 ];
 
 @NgModule({

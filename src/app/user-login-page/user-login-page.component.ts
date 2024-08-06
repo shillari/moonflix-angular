@@ -29,7 +29,7 @@ export class UserLoginPageComponent implements OnInit {
         // Add username and token to local storage
         localStorage.setItem('username', result.user.username)
         localStorage.setItem('token', result.token)
-        this.router.navigate(['movies']);
+        this.router.navigate(['home/movies']);
         this.snackBar.open('User logged in', 'OK', {
           duration: 2000
         });
