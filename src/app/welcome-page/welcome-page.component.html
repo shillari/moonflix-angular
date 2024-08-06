@@ -12,6 +12,6 @@
   <div class="main-page">
     <img class="logo" src="img/logo.png" alt="logo">
     <app-user-login-page *ngIf="login"></app-user-login-page>
-    <app-user-registration-page *ngIf="!login"></app-user-registration-page>
+    <app-user-registration-page *ngIf="!login" (registerSuccess)="onRegistrationSuccess()"></app-user-registration-page>
   </div>
 </main>

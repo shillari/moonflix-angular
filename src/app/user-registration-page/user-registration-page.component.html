@@ -15,7 +15,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Birthday</mat-label>
-      <input matInput [(ngModel)]="userData.birthday" type="date" placeholder="Birthday" name="Birthday">
+      <input matInput [(ngModel)]="userData.birthday" type="date" placeholder="Birthday" name="Birthday" required>
     </mat-form-field>
   </form>
   <button mat-raised-button (click)="registerUser()" color="primary">

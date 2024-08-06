@@ -20,6 +20,10 @@ export class WelcomePageComponent implements OnInit {
     this.login = false;
   }
 
+  onRegistrationSuccess() {
+    this.login = true;
+  }
+
   // This is the function that will open the dialog when the login button is clicked
   openUserLogin(): void {
     this.login = true;

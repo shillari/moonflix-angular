@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration-page',
@@ -10,10 +11,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserRegistrationPageComponent implements OnInit {
 
   @Input() userData = { username: '', password: '', email: '', birthday: '' };
+  @Output() registerSuccess = new EventEmitter<void>();
 
   constructor(
     public fetchApiData: FetchApiDataService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -24,8 +27,9 @@ export class UserRegistrationPageComponent implements OnInit {
 
     this.fetchApiData.userRegistration(this.userData).subscribe({
       next: (result) => {
-        // Logic for a successful user registration goes here! (To be implemented)
-        this.snackBar.open(result, 'OK', {
+        // Logic for a successful user registration 
+        this.registerSuccess.emit();
+        this.snackBar.open('User registered', 'OK', {
           duration: 2000
         });
       },
