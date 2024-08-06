@@ -26,7 +26,6 @@ import { UserRegistrationPageComponent } from './user-registration-page/user-reg
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DetailsDialogComponent } from './details-dialog/details-dialog.component';
-import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const appRoutes: Routes = [
@@ -56,7 +55,7 @@ const appRoutes: Routes = [
     UserRegistrationPageComponent,
     UserProfileComponent,
     DetailsDialogComponent,
-    FavoriteListComponent,
+
   ],
   imports: [
     BrowserModule,
