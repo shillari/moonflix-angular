@@ -3,6 +3,17 @@ $primary: #d0d8db;
 $secondary: #CDD6CF;
 $body-bg: #34373a81;
 
+// image background
+.movie-img {
+  width: 100%;
+  height: 80%;
+}
+
+.movie-img img {
+  width: 100vw;
+  height: 100vh;
+}
+
 // Styles for the slide and images
 .slide,
 .slide img {
@@ -15,24 +26,33 @@ $body-bg: #34373a81;
   object-fit: cover;
 }
 
+.favorite-toggle {
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
 // Cards container styles
 .cards {
   position: absolute;
-  bottom: 0;
+
   width: 100%; // Ensure it takes up the full width of the viewport
   display: flex;
+  justify-items: center;
   align-items: center;
   overflow-x: auto; // Only allow horizontal scrolling
   overflow-y: hidden; // Prevent vertical scrolling
   white-space: nowrap; // Keep cards in a single line
   padding: 10px 0; // Padding adjustment to prevent overflow
   box-sizing: border-box; // Include padding in the element's total width
+  cursor: pointer;
 }
 
 // Individual card styles
 .mdc-card {
   flex: 0 0 auto; // Prevents cards from shrinking or growing
-  width: 400px;
+  width: 300px !important;
   height: auto; // Adjust based on content
   margin-right: 10px; // Space between cards
   background-color: $body-bg;
@@ -46,10 +66,19 @@ $body-bg: #34373a81;
 .mat-mdc-card-header,
 .mdc-card,
 .mdc-card__actions,
-.mat-mdc-card-subtitle {
-  max-width: 100%;
+.mat-mdc-card-subtitle,
+.mat-mdc-card-title {
+  max-width: 100% !important;
   background: $body-bg !important;
   color: $secondary !important;
+}
+
+.card-title {
+  display: block; // Ensures the element is treated as a block element
+  overflow: hidden; // Hides overflow content
+  white-space: nowrap; // Prevents text from wrapping to the next line
+  text-overflow: ellipsis !important; // Adds ellipsis (...) for overflowed text
+  max-width: 100%;
 }
 
 .mdc-card img {
@@ -64,8 +93,8 @@ $body-bg: #34373a81;
   border-radius: 5px;
 }
 
-.mat-mdc-button-base {
-  color: black !important;
+.mat-mdc-button-base:last-child {
+  color: $secondary !important;
 }
 
 .mdc-card:hover {
@@ -73,4 +102,51 @@ $body-bg: #34373a81;
   box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12),
     0 8px 32px -8px hsla(0, 0%, 0%, 0.14),
     0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+}
+
+.mat-icon {
+  width: 21px !important;
+  height: 21px !important;
+  font-size: 20px !important;
+}
+
+.mat-icon.favorite {
+  color: rgb(184, 4, 4);
+}
+
+@media screen and (max-width: 500px) {
+  .mdc-card {
+    width: 250px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .movie-img {
+    width: 100%;
+    height: 60%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .movie-img {
+    width: 100%;
+    height: 60%;
+  }
+
+  .movie-img img {
+    width: 100vw;
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .movie-img {
+    width: 100%;
+    height: 50%;
+  }
+
+  .movie-img img {
+    width: 100vw;
+    height: 55vh;
+  }
 }

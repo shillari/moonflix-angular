@@ -1,0 +1,46 @@
+<div class="profile-page">
+
+
+  <div class="profile-container">
+    <mat-tab-group>
+      <mat-tab label="Profile">
+        <form>
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="userData.username" placeholder="Username" type="text" name="Username" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input matInput [(ngModel)]="userData.email" type="email" placeholder="Email" name="Email" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Birthday</mat-label>
+            <input matInput [(ngModel)]="userData.birthday" type="date" placeholder="Birthday" name="Birthday">
+          </mat-form-field>
+        </form>
+        <button mat-raised-button (click)="updateUser()" color="primary">
+          Update
+        </button>
+      </mat-tab>
+      <mat-tab label="Password">
+        <form>
+          <mat-form-field appearance="fill">
+            <mat-label>Old password</mat-label>
+            <input matInput [(ngModel)]="userDetails.oldpassword" type="password" placeholder="old password"
+              name="oldpassword" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>New password</mat-label>
+            <input matInput [(ngModel)]="userDetails.newpassword" type="password" placeholder="new password"
+              name="newpassword" required>
+          </mat-form-field>
+        </form>
+        <button mat-raised-button (click)="changePassword()" color="primary">
+          Update
+        </button>
+      </mat-tab>
+    </mat-tab-group>
+
+
+  </div>
+</div>

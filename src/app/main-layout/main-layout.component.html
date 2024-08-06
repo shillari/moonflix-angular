@@ -3,11 +3,14 @@
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu icon">
       <mat-icon>menu</mat-icon>
     </button>
+
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Profile</button>
+      <button mat-menu-item (click)="home()">Home</button>
+      <button mat-menu-item (click)="goToProfile()">Profile</button>
       <hr>
       <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
+    <img class="logo-img" src="img/logo_letters.png" alt="logo">
   </mat-toolbar>
 </div>
 <router-outlet></router-outlet>

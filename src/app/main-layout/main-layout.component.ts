@@ -18,7 +18,7 @@ export class MainLayoutComponent implements OnInit {
 
   // Redirect to profile page
   goToProfile() {
-    // TODO
+    this.router.navigate(['/profile']);
   }
 
   // Log out the user
@@ -27,8 +27,9 @@ export class MainLayoutComponent implements OnInit {
     this.router.navigate(['/welcome']);
   }
 
-  login() {
-    // TODO
+  // Redirect to home page
+  home() {
+    this.router.navigate(['/movies']);
   }
 
 }

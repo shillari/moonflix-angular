@@ -63,6 +63,19 @@ export class FetchApiDataService {
     );
   }
 
+  // Making the api call for change password endpoint
+  public changePassword(userDetails: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.put(`${apiUrl}/users/${userDetails.username}/password`, userDetails, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+      responseType: 'text'
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // Making the api call for the delete user endpoint
   public deleteUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
@@ -144,11 +157,13 @@ export class FetchApiDataService {
   // Making the api call for add a movie to a favorite list endpoint
   public addFavoriteMovie(userDetails: any, movieDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.post(`${apiUrl}/users/${userDetails.username}/movies/${movieDetails.id}`, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`,
-      })
-    }).pipe(
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.post(`${apiUrl}/users/${userDetails.username}/movies/${movieDetails._id}`,
+      null,
+      { headers }
+    ).pipe(
       catchError(this.handleError)
     );
   }
@@ -156,7 +171,7 @@ export class FetchApiDataService {
   // Making the api call for delete a movie from a favorite list endpoint
   public deleteFavoriteMovie(userDetails: any, movieDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(`${apiUrl}/users/${userDetails.username}/movies/${movieDetails.id}`, {
+    return this.http.delete(`${apiUrl}/users/${userDetails.username}/movies/${movieDetails._id}`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${token}`,
       })

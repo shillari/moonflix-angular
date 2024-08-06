@@ -1,16 +1,6 @@
-$body-bg: #34373aa2;
+$body-bg: #b5bcc4a2;
 
-.toolbar-welcome,
-.mat-toolbar-single-row {
-  background: transparent;
-  position: absolute;
-}
-
-.mat-toolbar-single-row button {
-  margin-right: 10px;
-}
-
-.main {
+.profile-page {
   width: 100vw;
   height: 100vh;
   background-image: url('../../../public/img/backgroud.png');
@@ -20,10 +10,10 @@ $body-bg: #34373aa2;
   align-items: center;
 }
 
-.main-page {
+.profile-container {
   display: flex;
-  width: 500px;
-  height: 700px;
+  width: 470px;
+  height: 400px;
   background-color: $body-bg;
   color: white;
   justify-items: center;
@@ -34,8 +24,19 @@ $body-bg: #34373aa2;
   padding: 50px;
 }
 
-.logo {
-  width: 200px;
-  height: 200px;
-  padding-bottom: 20px;
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-tab-body-wrapper {
+  margin-top: 20px;
+}
+
+.mdc-tab__text-label,
+.mat-mdc-tab-labels {
+  color: white !important;
+}
+
+.mat-mdc-tab-header {
+  background-color: wheat !important;
 }

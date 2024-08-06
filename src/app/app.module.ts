@@ -12,8 +12,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
-import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -25,6 +23,11 @@ import { MatLabel } from '@angular/material/form-field';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { UserLoginPageComponent } from './user-login-page/user-login-page.component';
 import { UserRegistrationPageComponent } from './user-registration-page/user-registration-page.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DetailsDialogComponent } from './details-dialog/details-dialog.component';
+import { FavoriteListComponent } from './favorite-list/favorite-list.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -34,6 +37,9 @@ const appRoutes: Routes = [
     children: [
       {
         path: 'movies', component: MovieCardComponent
+      },
+      {
+        path: 'profile', component: UserProfileComponent
       }
     ]
   },
@@ -43,13 +49,14 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    UserRegistrationFormComponent,
-    UserLoginFormComponent,
     MovieCardComponent,
     WelcomePageComponent,
     MainLayoutComponent,
     UserLoginPageComponent,
     UserRegistrationPageComponent,
+    UserProfileComponent,
+    DetailsDialogComponent,
+    FavoriteListComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +74,8 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatMenuModule,
     MatLabel,
+    MatTabsModule,
+    MatSlideToggleModule,
   ],
   providers: [provideHttpClient(withFetch()), provideAnimationsAsync()],
   bootstrap: [AppComponent]

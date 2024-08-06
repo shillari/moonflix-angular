@@ -5,9 +5,9 @@
 }
 
 .mat-icon {
-  width: 50px;
-  height: 40px;
-  font-size: 40px;
+  width: 40px;
+  height: 30px;
+  font-size: 30px;
   background-color: rgba(245, 245, 245, 0.301);
   color: black;
   border-radius: 5px;
@@ -15,4 +15,16 @@
 
 .toolbar-welcome button {
   margin-right: 10px;
+}
+
+.mat-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  margin-left: 20px;
+  margin-top: 5px;
+  width: 100px;
+  height: 20px;
 }

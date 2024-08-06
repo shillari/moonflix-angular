@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div class="dialog-details" mat-dialog-content>
+  <img *ngIf="data.img" [src]="data.img" alt="{{ data.title }}" class="movie-image">
+  <p>{{ data.details }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

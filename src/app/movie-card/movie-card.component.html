@@ -1,24 +1,27 @@
-<ngb-carousel [interval]="5000" [showNavigationArrows]="false" [showNavigationIndicators]="false"
-  [pauseOnFocus]="false">
-  <ng-template ngbSlide *ngFor="let movie of movies.slice(0, 3)">
-    <img [src]="movie.imagePath" [alt]="movie.title">
-  </ng-template>
-</ngb-carousel>
+<div class="movie-img" *ngIf="movieImage">
+  <img [src]="movieImage" alt="movie image">
+</div>
 
 <div class="cards-container" style="overflow-x: auto; white-space: nowrap; width: 100%;">
-  <div class="cards" style="display: flex;">
-    <mat-card *ngFor="let movie of movies;" style="flex: 0 0 auto; width: 400px; height: auto; margin-right: 10px;">
+  <mat-slide-toggle class="favorite-toggle" [checked]="seeFavorites" (change)="showFavorites()">
+    Show favorites
+  </mat-slide-toggle>
+  <div class="cards">
+    <mat-card *ngFor="let movie of (seeFavorites ? favoriteList : movies);"
+      style="flex: 0 0 auto; width: 400px; height: auto; margin-right: 10px;" (click)="changeMovie(movie)">
 
       <img [src]="movie.imagePath" [alt]="movie.title" />
-      <mat-card-header>
+      <mat-card-header class="card-title">
         <mat-card-title>{{movie.title}}</mat-card-title>
         <mat-card-subtitle>Directed by: {{movie.director.name}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-button>Genre</button>
-        <button mat-button>Director</button>
-        <button mat-button>Synopsis</button>
-        <mat-icon>favorite_border</mat-icon>
+        <button mat-button (click)="openGenre(movie)">Genre</button>
+        <button mat-button (click)="openDirector(movie)">Director</button>
+        <button mat-button (click)="openSynopisis(movie)">Synopsis</button>
+        <button mat-button (click)="toggleFavorite(movie)">
+          <mat-icon [ngClass]="{'favorite': isFavorite(movie)}">favorite_border</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
