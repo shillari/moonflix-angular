@@ -1,6 +1,15 @@
 # Moonflix Angular
+Moonflix Frontend is the client-side component of the moonflix app, built using Angular and designed to interact with the [server-side code](https://github.com/shillari/moonflix_backend) (REST API and database).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+
+## Features
+- Login/register users.
+- View a list of available movies.
+- Add/remove a movie to/from a favorite list.
+- View a list of favorite movies.
+- Change user information.
+- Change password.
 
 ## Development server
 
@@ -13,10 +22,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
