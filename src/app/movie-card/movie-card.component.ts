@@ -2,9 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailsDialogComponent } from '../details-dialog/details-dialog.component';
-import { Title } from '@angular/platform-browser';
 
-
+/**
+ * The `MovieCardComponent` is responsible for displaying a list of movies,
+ * managing the user's favorite movies, and providing methods to interact
+ * with movie details such as director, genre, and synopsis.
+ * 
+ * @example
+ * <app-movie-card></app-movie-card>
+ */
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -19,7 +25,12 @@ export class MovieCardComponent implements OnInit {
   favorite: boolean = false;
   seeFavorites: boolean = localStorage.getItem('favorites') === 'true'; // Proper initialization
 
-
+  /**
+   * Constructor that injects the FetchApiDataService and MatDialog services.
+   * 
+   * @param fetchApiData - The service used to fetch movie and user data.
+   * @param dialog - The service used to open dialogs for movie details.
+   */
   constructor(public fetchApiData: FetchApiDataService,
     public dialog: MatDialog
   ) { }
@@ -31,6 +42,9 @@ export class MovieCardComponent implements OnInit {
       localStorage.setItem('favorites', 'false');
   }
 
+  /**
+   * Retrieves the list of movies from the API and updates the component's state.
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe({
       next: (result) => {
@@ -42,24 +56,29 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Toggles the visibility of the user's favorite movies.
+   */
   showFavorites() {
     // Retrieve the current value from localStorage, convert to boolean
     // and toggle the value
     this.seeFavorites = localStorage.getItem('favorites') !== 'true';
-
-    // Log the current state for debugging
-    console.log('SEE FAV ' + this.seeFavorites);
 
     // Store the updated value in localStorage as a string
     localStorage.setItem('favorites', this.seeFavorites.toString());
 
   }
 
+  /**
+   * Filters the list of movies to include only the user's favorite movies.
+   */
   getFavoriteList() {
     this.favoriteList = this.movies.filter(mov => this.isFavorite(mov));
-    console.log('FAV LIST ' + this.favoriteList);
   }
 
+  /**
+   * Retrieves the user's favorite movies from the API and updates the component's state.
+   */
   getFavoriteMovies() {
     this.fetchApiData.getFavoriteMovies(this.userDetails).subscribe({
       next: (result) => {
@@ -69,13 +88,24 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Checks if a given movie is in the user's list of favorite movies.
+   * 
+   * @param movie - The movie to check.
+   * @returns `true` if the movie is a favorite, `false` otherwise.
+   */
   isFavorite(movie: any): boolean {
     this.favorite = this.favoriteMovies.some(fav => fav === movie._id);
     return this.favorite;
   }
 
+  /**
+   * Toggles the favorite status of a movie.
+   * Adds or removes the movie from the user's favorite list.
+   * 
+   * @param movie - The movie to toggle favorite status for.
+   */
   toggleFavorite(movie: any) {
-    console.log(movie)
     if (this.isFavorite(movie)) {
       this.fetchApiData.deleteFavoriteMovie(this.userDetails, movie).subscribe({
         next: (result) => {
@@ -93,10 +123,20 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
+  /**
+   * Updates the currently displayed movie image.
+   * 
+   * @param movie - The movie whose image should be displayed.
+   */
   changeMovie(movie: any) {
     this.movieImage = movie.imagePath;
   }
 
+  /**
+   * Opens a dialog displaying details about the movie's director.
+   * 
+   * @param movie - The movie whose director details should be displayed.
+   */
   openDirector(movie: any) {
     this.dialog.open(DetailsDialogComponent, {
       data: {
@@ -107,6 +147,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens a dialog displaying details about the movie's genre.
+   * 
+   * @param movie - The movie whose genre details should be displayed.
+   */
   openGenre(movie: any) {
     this.dialog.open(DetailsDialogComponent, {
       data: {
@@ -116,6 +161,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens a dialog displaying the synopsis of the movie.
+   * 
+   * @param movie - The movie whose synopsis should be displayed.
+   */
   openSynopisis(movie: any) {
     this.dialog.open(DetailsDialogComponent, {
       data: {
